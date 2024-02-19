@@ -33,16 +33,17 @@
   /**
    * 错误？图片要怎么加载出来呀
    */
+  import img from '../statics/run.png'
   const imgSprite=ref(new Image())
-  imgSprite.value.src='../statics/run.png'
+  imgSprite.value.src=img
   console.log(imgSprite.value)
   const configSprite=ref({
     x:24,
     y:24,
-    image: imgSprite.value, // 精灵图的图片资源,不是路径
+    image: imgSprite, // 精灵图的图片资源,不是路径
+    animations: animations,
     animation: 'run', // 动画名称
     frameIndex: 0, // 当前帧索引
-    animations: animations,
     frameRate: 7,
   })
 </script>
