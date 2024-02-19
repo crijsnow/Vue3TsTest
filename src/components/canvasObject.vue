@@ -1,17 +1,18 @@
 <template>
   <v-stage :config="configKonva">
     <v-layer>
+      <v-image :config="configbgc" ></v-image>
+      <v-image :config="configSprite"  :crop="{ x: currentFrame * 48, y: 0, width: 48, height: 48 }" @click="fight"></v-image>
       <!-- <v-circle :config="configCircle"></v-circle> -->
-      <v-sprite :config="configSprite"></v-sprite>
     </v-layer>
   </v-stage>
 </template>
 
 <script setup lang="ts">
-  import {ref} from 'vue'
+  import {ref,onMounted} from 'vue'
   const configKonva=ref({
-        width: 200,
-        height: 200
+        width: 250,
+        height: 250
       })
   // const configCircle=ref({
   //       x: 100,
@@ -21,31 +22,51 @@
   //       stroke: "black",
   //       strokeWidth: 4
   //     })
-
-  const animations:{[key:string]:Array<number>}={
-    run:[
-      0, 0, 48, 48,
-      48, 0, 48, 48,
-      96, 0, 48, 48,
-      144, 0, 48, 48
-    ]
-  }
   /**
    * 错误？图片要怎么加载出来呀
    */
   import img from '../statics/run.png'
   const imgSprite=ref(new Image())
   imgSprite.value.src=img
-  console.log(imgSprite.value)
   const configSprite=ref({
     x:24,
     y:24,
+    width: 48,
+    height: 48,
     image: imgSprite, // 精灵图的图片资源,不是路径
-    animations: animations,
-    animation: 'run', // 动画名称
-    frameIndex: 0, // 当前帧索引
-    frameRate: 7,
   })
+  const currentFrame=ref(0)
+  onMounted(()=>{
+    setInterval(()=>{
+      if(currentFrame.value<=2) currentFrame.value++
+      else currentFrame.value=0
+    },100)
+  })
+
+  /**
+   * 背景图
+   */
+  import bgc from '../statics/bgc.png'
+  const bgcSprite=ref(new Image())
+  bgcSprite.value.src=bgc
+  const configbgc=ref({
+    x:0,
+    y:0,
+    width:250,
+    height:250,
+    image:bgcSprite
+  })
+
+  /**
+   * 战斗动画
+   */
+  import skillImg from '../statics/Cure4.png'
+  import AliceFight from '../statics/Alice018.png'
+  const fight:()=>void=()=>{
+    console.log(1);
+    
+  }
+
 </script>
 
 <style scoped>

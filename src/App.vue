@@ -3,6 +3,7 @@
   import type {InjectionKey,Ref} from 'vue'
   import testNum from './components/testNum.vue';
   import canvasObject from './components/canvasObject.vue';
+  import flash_record from './components/flash_record.vue';
   /**
    * particles_background存在问题
    */
@@ -42,6 +43,8 @@
   <testNum v-model:func="func"></testNum>
   <br><br>
   canvas：<canvasObject></canvasObject>
+  <br><br>
+  <flash_record></flash_record>
 </template>
 
 <style scoped>
