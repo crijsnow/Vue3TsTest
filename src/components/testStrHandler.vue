@@ -1,5 +1,5 @@
 <template>
-  <input v-if="!props.getdata" type="text" v-model="data">
+  <input v-if="!props.getdata || data" type="text" v-model="final">
   <input v-else type="text" :placeholder="'存在传入值'+props.getdata" disabled>
   <div>check:{{ complate }}</div>
 </template>
@@ -27,15 +27,19 @@ const props=withDefaults(defineProps<props>(),{
 //   'update:getdata':(value:string):void=>{}
 // })//基于选项
 // const emit=defineEmits<{(e:'update:getdata',value:string):void}>()//基于类型
-const emit =defineEmits<{'update:getdata':[value:string]}>()//最新的推荐写法
+const emit =defineEmits<{
+  'update:getdata':[value:string]
+  'update:abled':[boo:boolean]
+}>()//最新的推荐写法
 
 const data :Ref<string>=ref('')//通过Ref工具类型来实现
 
 const final=computed({
    get:():string=>{ return props.getdata || data.value },
    set:(value)=>{
-    if(props.getdata) emit('update:getdata',value)
-    else data.value=value
+    emit('update:getdata',value)
+    emit('update:abled',Boolean(value))
+    data.value=value
    }
 })
 

@@ -18,7 +18,7 @@ import App from './App.vue'
 //     await loadFull(engine); // you can load the full tsParticles library from "tsparticles" if you need it
 //     // await loadSlim(engine); //如果您不需要形状（Shapes）或动画（Animations），您可以从 “@tsparticles/slim” 加载精简版本。
 //   }
-
+import VueKonva from 'vue-konva'
 
 const app=createApp(App)
 // app.use(Particles, {
@@ -27,7 +27,7 @@ const app=createApp(App)
 //     await loadSlim(engine); // or you can load the slim version from "@tsparticles/slim" if don't need Shapes or Animations
 //   },
 // })
-
+app.use(VueKonva)
 app.use(createPinia())
 
 app.mount('#app')
