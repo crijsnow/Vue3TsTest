@@ -14,7 +14,9 @@
     "@tsparticles/slim": "^3.2.1",
     "@tsparticles/vue3": "^3.0.0",
     "konva": "^9.3.3",
+    "less": "^4.2.0",
     "pinia": "^2.1.7",
+    "pixi.js": "^7.4.0",
     "vue": "^3.3.11",
     "vue-konva": "^3.0.2"
   },

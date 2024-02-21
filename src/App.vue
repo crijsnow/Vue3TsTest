@@ -4,6 +4,8 @@
   import testNum from './components/testNum.vue';
   import canvasObject from './components/canvasObject.vue';
   import flash_record from './components/flash_record.vue';
+  import test2 from './components/test2.vue';
+  import pixi from './components/pixi.vue';
   /**
    * particles_background存在问题
    */
@@ -29,6 +31,9 @@
   const {testStrHandler,testdata,han,abled,setAbled}=testInput()
 
   const func=ref<string>('')
+
+  const set1=ref(10)
+  const set2=ref(2)
 </script>
 
 <template>
@@ -45,6 +50,10 @@
   canvas：<canvasObject></canvasObject>
   <br><br>
   <flash_record></flash_record>
+  <br>
+  <test2 v-model:set1="set1" v-model:set2="set2"></test2>
+  <br>
+  <pixi></pixi>
 </template>
 
 <style scoped>
